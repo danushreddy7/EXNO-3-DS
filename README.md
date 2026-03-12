@@ -234,6 +234,7 @@ plt.show()
 ![image](https://github.com/Prasannalakshmiganesan/EXNO-3-DS/assets/118610231/3987a28b-3816-41b2-9a9d-6a1cedf8382e)
 
 # RESULT:
-       # INCLUDE YOUR RESULT HERE
+Thus the given data, Feature Encoding, Transformation process and save the data to a file was performed successfully.
+
 
        
