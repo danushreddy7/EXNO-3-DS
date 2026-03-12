@@ -35,7 +35,6 @@ We use this categorical data encoding technique when the features are nominal(do
 Developed by : T.DANUSH REDDY
 Reg No : 212223040029
 ```
-
 ```
 import pandas as pd
 df=pd.read_csv("/content/Encoding Data.csv")
@@ -51,15 +50,11 @@ e1.fit_transform(df[["ord_2"]])
 ```
 ![image](https://github.com/Prasannalakshmiganesan/EXNO-3-DS/assets/118610231/c5ae2314-6f2b-4d93-92b3-f44d1b74015a)
 
-
-
 ```
 df['bo2']=e1.fit_transform(df[["ord_2"]])
 df
 ```
 ![image](https://github.com/Prasannalakshmiganesan/EXNO-3-DS/assets/118610231/4ae17d2a-aa22-4340-9faf-8567549250f6)
-
-
 
 ```
 le=LabelEncoder()
@@ -69,8 +64,6 @@ dfc
 ```
 ![image](https://github.com/Prasannalakshmiganesan/EXNO-3-DS/assets/118610231/2249ccf3-4a16-462b-b745-677312c7fd42)
 
-
-
 ```
 from sklearn.preprocessing import OneHotEncoder
 ohe=OneHotEncoder(sparse=False)
@@ -78,7 +71,6 @@ df2=df.copy()
 enc=pd.DataFrame(ohe.fit_transform(df2[["nom_0"]]))
 ```
 ![image](https://github.com/Prasannalakshmiganesan/EXNO-3-DS/assets/118610231/d2714505-ceae-48c6-b428-fc421aaa735d)
-
 
 ```
 df2=pd.concat([df2,enc],axis=1)
@@ -91,14 +83,10 @@ pd.get_dummies(df2,columns=["nom_0"])
 ```
 ![image](https://github.com/Prasannalakshmiganesan/EXNO-3-DS/assets/118610231/e56e11b0-9489-41a5-973c-e32fca8f9840)
 
-
-
 ```
 pip install --upgrade category_encoders
 ```
 ![image](https://github.com/Prasannalakshmiganesan/EXNO-3-DS/assets/118610231/0711d42f-4456-4222-8334-f183bc7c2385)
-
-
 
 ```
 from category_encoders import BinaryEncoder
@@ -106,8 +94,6 @@ df=pd.read_csv("/content/data.csv")
 df
 ```
 ![image](https://github.com/Prasannalakshmiganesan/EXNO-3-DS/assets/118610231/3d2f8b4c-0ffc-4754-8c1b-ad637c727c9b)
-
-
 
 ```
 be=BinaryEncoder()
@@ -117,7 +103,6 @@ dfb1=df.copy()
 dfb
 ```
 ![image](https://github.com/Prasannalakshmiganesan/EXNO-3-DS/assets/118610231/781ddd71-1fc6-499b-9234-b83778405580)
-
 
 ```
 from category_encoders import TargetEncoder
@@ -129,8 +114,6 @@ CC
 ```
 ![image](https://github.com/Prasannalakshmiganesan/EXNO-3-DS/assets/118610231/6f1877a4-9ba9-45d6-8df2-38fdc103a0ef)
 
-
-
 ```
 import pandas as pd
 from scipy import stats
@@ -140,40 +123,30 @@ df
 ```
 ![image](https://github.com/Prasannalakshmiganesan/EXNO-3-DS/assets/118610231/63cbb12a-e9eb-447e-855a-e56c706bbfa9)
 
-
-
 ```
 df.skew()
 ```
 ![image](https://github.com/Prasannalakshmiganesan/EXNO-3-DS/assets/118610231/3d04bbce-76dc-4571-8c8d-5aad234c1766)
-
-
 
 ```
 np.log(df["Highly Positive Skew"])
 ```
 ![image](https://github.com/Prasannalakshmiganesan/EXNO-3-DS/assets/118610231/7247340c-6488-4b75-9deb-0ad3f10e03fd)
 
-
-
 ```
 np.reciprocal(df["Moderate Positive Skew"])
 ```
 ![image](https://github.com/Prasannalakshmiganesan/EXNO-3-DS/assets/118610231/71ae0399-a828-406a-93a6-0e36cc31e249)
-
 
 ```
 np.sqrt(df["Highly Positive Skew"])
 ```
 ![image](https://github.com/Prasannalakshmiganesan/EXNO-3-DS/assets/118610231/9b500fd0-9b55-4397-b1e8-364652aca983)
 
-
 ```
 np.square(df["Highly Positive Skew"])
 ```
-
 ![image](https://github.com/Prasannalakshmiganesan/EXNO-3-DS/assets/118610231/d243323b-c97e-4c55-a41f-f76d176e6461)
-
 
 ```
 df["Highly Positive Skew_boxcox"], parameters=stats.boxcox(df["Highly Positive Skew"])
@@ -181,12 +154,10 @@ df
 ```
 ![image](https://github.com/Prasannalakshmiganesan/EXNO-3-DS/assets/118610231/758eaaba-b780-4fee-8487-d8242a9d6148)
 
-
 ```
 df["Moderate Negative Skew_yeojohnson"],parameters=stats.yeojohnson(df["Moderate Negative Skew"])
 ```
 ![image](https://github.com/Prasannalakshmiganesan/EXNO-3-DS/assets/118610231/4945b8c6-e27d-4526-9032-0c0aeb9ab576)
-
 
 ```
 import seaborn as sns
@@ -197,34 +168,26 @@ plt.show()
 ```
 ![image](https://github.com/Prasannalakshmiganesan/EXNO-3-DS/assets/118610231/52a7553c-c1bd-4489-a0cb-b13a27684c23)
 
-
-
 ```
 from sklearn.preprocessing import QuantileTransformer
 qt=QuantileTransformer(output_distribution='normal',n_quantiles=891)
-
 df["Moderate Negative Skew"]=qt.fit_transform(df[["Moderate Negative Skew"]])
-
 sm.qqplot(df["Moderate Negative Skew"],line='45')
 plt.show()
 ```
 ![image](https://github.com/Prasannalakshmiganesan/EXNO-3-DS/assets/118610231/3688ed78-4920-4cd4-9e33-4420fc790b8d)
-
 
 ```
 df["Highly Negative Skew_1"]=qt.fit_transform(df[["Highly Negative Skew"]])
 sm.qqplot(df["Highly Negative Skew"],line='45')
 plt.show()
 ```
-
 ![image](https://github.com/Prasannalakshmiganesan/EXNO-3-DS/assets/118610231/fde4b296-88ec-46ad-b6f3-2cf2b64a15f2)
-
 
 ```
 sm.qqplot(df["Highly Negative Skew_1"],line='45')
 plt.show()
 ```
-
 ![image](https://github.com/Prasannalakshmiganesan/EXNO-3-DS/assets/118610231/57bae70b-8ee0-4ab1-86bf-733d2597089d)
 
 ```
